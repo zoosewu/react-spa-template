@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import Header from './header'
+import { Component as Header } from './header'
 import { MemoryRouter } from 'react-router-dom'
 
 test('renders header', () => {

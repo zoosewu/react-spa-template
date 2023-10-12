@@ -2,7 +2,7 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import pkg from '@/../package.json'
 
-const Footer: React.FC = () => {
+export const Component: React.FC = () => {
   return (
     <Container fluid className='bg-light py-3'>
       <Container>
@@ -13,5 +13,3 @@ const Footer: React.FC = () => {
     </Container>
   )
 }
-
-export default Footer

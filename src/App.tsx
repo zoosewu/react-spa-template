@@ -1,21 +1,25 @@
 import React from 'react'
-import Layout from './components/layout/layout'
-import Home from './components/home'
-import ReducerDispatch from './components/reducerDispatch'
-import NoMatch from './components/noMatch'
+import { Component as Layout } from './components/layout/layout'
+import { Component as Home } from './components/home'
 import './App.scss'
 import { createHashRouter, RouterProvider } from 'react-router-dom'
 import type { RouteObject } from 'react-router-dom'
+import type { Router } from '@remix-run/router'
+
 interface NavLabel {
   label?: string
 }
-
 export type ContainerRouter = RouteObject & NavLabel
+
 export const containerRouter: ContainerRouter[] = [
   { index: true, element: <Home /> },
-  { path: 'home', element: <Home />, label: 'Home' },
-  { path: 'reducerDispatch', element: <ReducerDispatch />, label: 'Reducer' },
-  { path: '*', element: <NoMatch /> }
+  { path: 'home', label: 'Home', element: <Home /> },
+  {
+    path: 'reducerDispatch',
+    label: 'Reducer',
+    lazy: async () => await import('./components/reducerDispatch')
+  },
+  { path: '*', lazy: async () => await import('./components/noMatch') }
 ]
 export const router: Router = createHashRouter([
   {
@@ -27,7 +31,7 @@ export const router: Router = createHashRouter([
 const App = (): JSX.Element => {
   return (
     <div className='App'>
-      <RouterProvider router={router} />
+      <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />
     </div>
   )
 }

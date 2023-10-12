@@ -1,9 +1,8 @@
 import React from 'react'
-const Home: React.FC = () => {
+export const Component: React.FC = () => {
   return (
     <>
       This is home page.
     </>
   )
 }
-export default Home

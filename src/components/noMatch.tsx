@@ -1,9 +1,8 @@
 import React from 'react'
-const NoMatch: React.FC = () => {
+export const Component: React.FC = () => {
   return (
     <>
       Something went wrong.
     </>
   )
 }
-export default NoMatch

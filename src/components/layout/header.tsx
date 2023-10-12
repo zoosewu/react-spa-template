@@ -3,7 +3,7 @@ import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import pkg from '@/../package.json'
 import { containerRouter } from '@/App'
-const Header: React.FC = () => {
+export const Component: React.FC = () => {
   return (
     <Navbar bg='light' expand='lg'>
       <Link className='navbar-brand' to='/'>{pkg.displayName}</Link>
@@ -18,4 +18,3 @@ const Header: React.FC = () => {
     </Navbar>
   )
 }
-export default Header

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import NoMatch from './noMatch'
+import { Component as NoMatch } from './noMatch'
 
 test('renders text', () => {
   render(<NoMatch />)

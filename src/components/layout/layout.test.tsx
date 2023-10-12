@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import Layout from './layout'
+import { Component as Layout } from './layout'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 describe('test layout', () => {
   const FakeComponent: React.FC = () => (<div>fake text</div>)

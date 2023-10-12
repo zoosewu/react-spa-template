@@ -1,17 +1,21 @@
-import React from 'react'
-import Header from './header'
-import Footer from './footer'
-import { Outlet } from 'react-router-dom'
+import React, { Suspense } from 'react'
+import { Component as Header } from './header'
+import { Component as Footer } from './footer'
+import { Outlet, useNavigation } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
-const Layout: React.FC = () => {
+import { Component as Loading } from './Loading'
+export const Component: React.FC = () => {
+  const navigation = useNavigation()
   return (
     <>
       <Header />
       <Container fluid>
-        <Outlet />
+        <Suspense fallback={<Loading />}>
+          {navigation.state !== 'idle' && <p>Navigation in progress...</p>}
+          <Outlet />
+        </Suspense>
       </Container>
       <Footer />
     </>
   )
 }
-export default Layout

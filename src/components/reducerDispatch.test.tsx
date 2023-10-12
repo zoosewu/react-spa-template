@@ -1,9 +1,5 @@
-import { render, screen } from '@testing-library/react'
-import ReducerDispatch from './reducerDispatch'
-import thunk, { Provider } from 'react-redux'
-import { AnyAction } from '@reduxjs/toolkit'
-import { RootState } from '@/redux/store'
-import createMockStore from 'redux-mock-store'
+import { screen } from '@testing-library/react'
+import { Component as ReducerDispatch } from './reducerDispatch'
 import { renderWithProviders } from '@/utils/redux-utils'
 
 // type DispatchExts = ThunkDispatch<RootState, void, AnyAction>
@@ -13,13 +9,13 @@ import { renderWithProviders } from '@/utils/redux-utils'
 
 describe('renders reducerDispatch', () => {
   beforeAll(() => {
-    const { getByText } = renderWithProviders(<ReducerDispatch />, {
+    renderWithProviders(<ReducerDispatch />, {
       preloadedState: {
         counter: { value: 5 }
       }
     })
-    const bottunElements = screen.getAllByRole('button')
-    expect(bottunElements).toHaveLength(3)
+    const buttonElements = screen.getAllByRole('button')
+    expect(buttonElements).toHaveLength(3)
   })
   test('test button', () => {
 
