@@ -1,21 +1,16 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Component as Layout } from './layout'
-import { MemoryRouter, Route, Routes } from 'react-router-dom'
+// import { Component as Layout } from './layout'
+import { RouterProvider } from 'react-router-dom'
+// import type { Router } from '@remix-run/router'
+import { router } from '@/App'
+// import { ContainerRouter } from '@/containerRouter'
 describe('test layout', () => {
-  const FakeComponent: React.FC = () => (<div>fake text</div>)
-  test('renders FakeComponent', () => {
+  test('render layout', () => {
     const { container } = render(
-      <MemoryRouter initialEntries={['/']}>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path='/' element={<FakeComponent />} />
-          </Route>
-        </Routes>
-      </MemoryRouter>
+      <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />
     )
 
-    expect(screen.getByText(/fake text/i)).toBeInTheDocument()
     const headerElement = container.querySelector('a.navbar-brand')
     expect(headerElement).toBeInTheDocument()
     const footerElement = screen.getByText(/All rights reserved\./i)
